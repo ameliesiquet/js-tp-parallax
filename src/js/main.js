@@ -1,3 +1,29 @@
+document.documentElement.classList.add('js-enabled');
+
+
+const createParallax = {
+   parallax : document.querySelector('.parallax'),
+   scrolledHeight : window.scrollY,
+
+  init (){
+    window.addEventListener('scroll', ()=>{
+      this.limit = this.parallax.offsetTop + this.parallax.offsetHeight;
+      console.log(this.scrolledHeight, this.parallax.offsetTop, this.parallax.offsetHeight, this.limit);
+      if(this.scrolledHeight > this.parallax.offsetTop && this.scrolledHeight<= this.limit){
+        console.log("lol")
+        this.parallax.style.backgroundPositionY = (this.scrolledHeight -this.parallax.offsetTop) /2 + "px";
+      } else {
+        this.parallax.style.backgroundPositionY = 0;
+      }
+    });
+  }
+}
+ createParallax.init();
+
+
+
+
+/*
 (function () {
   const app = {
     cacheDom() {
@@ -21,5 +47,8 @@
       }
     }
   };
+
   app.init();
 })();
+
+ */
